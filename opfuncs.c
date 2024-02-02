@@ -12,6 +12,7 @@ void pint(stack_t **head, unsigned int line_number)
 	if (!head || *head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_nodes();
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*head)->n);
@@ -31,6 +32,7 @@ void pop(stack_t **head, unsigned int line_number)
 	if (!head || *head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_nodes();
 		exit(EXIT_FAILURE);
 	}
 	ptr = *head;
@@ -55,6 +57,7 @@ void swap(stack_t **head, unsigned int line_number)
 	if (!head || *head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		free_nodes();
 		exit(EXIT_FAILURE);
 	}
 	tmp = (*head)->next->n;
@@ -74,6 +77,7 @@ void add(stack_t **head, unsigned int line_number)
 	if (!head || *head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		free_nodes();
 		exit(EXIT_FAILURE);
 	}
 	(*head)->next->n += (*head)->n;

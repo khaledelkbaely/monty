@@ -34,6 +34,7 @@ void execute_opcode(char *opcode, char *value, int line_number)
 	if (!isopcode)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+		free_nodes();
 		exit(EXIT_FAILURE);
 	}
 }
@@ -64,12 +65,14 @@ void call_func(op_func func, char *opcode, char *value, int line_number)
 		if (value == NULL)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			free_nodes();
 			exit(EXIT_FAILURE);
 		}
 		for (i = 0; value[i]; i++)
 			if (!isdigit(value[i]))
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+				free_nodes();
 				exit(EXIT_FAILURE);
 			}
 		node = create_node(atoi(value) * sign);
@@ -93,6 +96,7 @@ stack_t *create_node(int value)
 	if (node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_nodes();
 		exit(EXIT_FAILURE);
 	}
 	node->next = NULL;
@@ -114,7 +118,10 @@ void push(stack_t **new, __attribute__((unused)) unsigned int line_number)
 	stack_t *tmp;
 
 	if (!new || *new == NULL)
+	{
+		free_nodes();
 		exit(EXIT_FAILURE);
+	}
 	if (head == NULL)
 	{
 		head = *new;

@@ -20,5 +20,18 @@ int main(int argc, char **argv)
 	}
 
 	file_open(argv[1]);
+	free_nodes();
 	return (0);
+}
+
+void free_nodes(void)
+{
+	stack_t *ptr;
+
+	while (head)
+	{
+		ptr = head;
+		head = head->next;
+		free(ptr);
+	}
 }
