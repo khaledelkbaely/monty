@@ -1,12 +1,12 @@
 #ifndef _MONTY_H
 #define _MONTY_H
 
+#define _GNU_SOURCE
 #include <ctype.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-int getline(char **, size_t *, FILE *);
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
