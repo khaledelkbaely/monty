@@ -45,9 +45,11 @@ void pstr(stack_t **head, unsigned int line_number)
 		return;
 	}
 	ptr = *head;
-	while (ptr && ptr->n != 0 && !isascii(ptr->n))
+	while (ptr)
 	{
-		printf("%c\n", ptr->n);
+		if (ptr->n <= 0 || ptr->n > 127)
+			break;
+		printf("%c", ptr->n);
 		ptr = ptr->next;
 	}
 	putchar('\n');
@@ -77,8 +79,8 @@ void rotl(stack_t **head, unsigned int line_number)
 	ptr->next = *head;
 	(*head)->prev = ptr;
 	*head = (*head)->next;
+	(*head)->prev->next = NULL;
 	(*head)->prev = NULL;
-	ptr->next->next = NULL;
 }
 /**
  * rotr - rotates the stack to the bottom
