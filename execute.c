@@ -23,6 +23,10 @@ void execute_opcode(char *opcode, char *value, int line_number)
 		{"sub", sub},
 		{"mul", mul},
 		{"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 	if (*opcode == '#')
