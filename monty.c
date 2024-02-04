@@ -4,7 +4,6 @@ stack_t *head = NULL;
 
 /**
  * main - main function for monty program
- *
  * @argc: number of arguments passed
  * @argv: argument vector
  *
@@ -24,6 +23,10 @@ int main(int argc, char **argv)
 	return (0);
 }
 
+/**
+ * free_nodes - free allocated memory used by the stack
+ * Return: Nothing
+ */
 void free_nodes(void)
 {
 	stack_t *ptr;

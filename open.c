@@ -55,7 +55,7 @@ void parse_line(char *line, int line_number)
 	const char *delim = "\n ";
 
 	opcode = strtok(line, delim);
-	if (opcode == NULL)
+	if (opcode == NULL || *opcode == '#')
 		return;
 	val = strtok(NULL, delim);
 	execute_opcode(opcode, val, line_number);

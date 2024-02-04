@@ -19,6 +19,10 @@ void execute_opcode(char *opcode, char *value, int line_number)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"div", divide},
+		{"sub", sub},
+		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 	if (*opcode == '#')
